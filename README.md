@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @BWChavez2023
 - 👀 I’m interested in ... Cybersecurity  
 - 🌱 I’m currently learning ... Sec+, Network+, and cloud computing 
-- 💞️ I’m looking to collaborate on ... 
+- 💞️ I’m looking to collaborate on ... Scripts and projects
 - 📫 How to reach me ... on LinkedIn www.linkedin.com/in/brandon-w-chavez-25b56b29b
 
 <!---
