@@ -1,0 +1,69 @@
+import turtle
+
+# Initialize screen and objects
+screen = turtle.Screen()
+screen.title("Pong")
+screen.setup(width=800, height=600)
+
+paddle_a = turtle.Turtle()
+paddle_a.shape("square")
+paddle_a.color("blue")
+paddle_a.penup()
+paddle_a.goto(-350, 0)
+
+paddle_b = turtle.Turtle()
+paddle_b.shape("square")
+paddle_b.color("red")
+paddle_b.penup()
+paddle_b.goto(350, 0)
+
+ball = turtle.Turtle()
+ball.shape("circle")
+ball.color("green")
+ball.penup()
+ball.goto(0, 0)
+
+# Define movement functions
+def move_up_a():
+    paddle_a.sety(paddle_a.ycor() + 20)
+
+def move_down_a():
+    paddle_a.sety(paddle_a.ycor() - 20)
+
+def move_up_b():
+    paddle_b.sety(paddle_b.ycor() + 20)
+
+def move_down_b():
+    paddle_b.sety(paddle_b.ycor() - 20)
+
+# Bind keyboard controls
+screen.onkey(move_up_a, "w")
+screen.onkey(move_down_a, "s")
+screen.onkey(move_up_b, "Up")
+screen.onkey(move_down_b, "Down")
+
+# Game loop
+while True:
+    # Update ball position
+    ball.setheading(ball.heading() + 5)
+    ball.forward(5)
+
+    # Check for collisions
+    if ball.ycor() > 290 or ball.ycor() < -290:
+        ball.setheading(180 - ball.heading())
+
+    if ball.xcor() > 380 and ball.heading() == 0:
+        # Player A loses
+        break
+    elif ball.xcor() < -380 and ball.heading() == 180:
+        # Player B loses
+        break
+
+    # Check for paddle collisions
+    if ball.distance(paddle_a) < 20 and ball.heading() == 0:
+        ball.setheading(30 + ball.heading())
+    elif ball.distance(paddle_b) < 20 and ball.heading() == 180:
+        ball.setheading(150 - ball.heading())
+
+# End game
+screen.exitonclick()
